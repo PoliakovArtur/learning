@@ -1,3 +1,5 @@
+package lesson_1_basics;
+
 import java.util.Scanner;
 
 public class Lift {
@@ -15,7 +17,7 @@ public class Lift {
             int startFloor = scan.nextInt();
             System.out.println("Введите конечный этаж");
             int desiredFloor = scan.nextInt();
-            String Ending = "Приехали!";
+            String ending = "Приехали!";
             if (startFloor < desiredFloor) {
                 while (startFloor != (desiredFloor + 1)) {
                     System.out.println(startFloor++);
@@ -25,7 +27,7 @@ public class Lift {
                     System.out.println(startFloor--);
                 }
             }
-            System.out.println(Ending);
+            System.out.println(ending);
         }
     }
 }
