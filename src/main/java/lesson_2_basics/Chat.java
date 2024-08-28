@@ -16,8 +16,13 @@ public class Chat {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        String phrase = scanner.nextLine();
-
+        while (true) {
+            String phrase = scanner.nextLine();
+            switch (phrase) {
+                case ("Привет.")  -> System.out.println("Привет.");
+                case ("Как дела?") -> System.out.println("Хорошо как у тебя");
+                default -> System.out.println("Не понимаю :(");
+            }
+        }
     }
 }
