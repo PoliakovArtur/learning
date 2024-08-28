@@ -23,8 +23,8 @@ public class MajorityFunction {
             System.out.println("Введите b3");
             boolean b3 = scanner.nextBoolean();
             boolean maj = b1 == b2 ? b1 : b3;
-System.out.println(maj);
+            System.out.println(maj);
 
         }
-            }
-        }
+    }
+}

@@ -19,7 +19,7 @@ public class Chat {
         while (true) {
             String phrase = scanner.nextLine();
             switch (phrase) {
-                case ("Привет.")  -> System.out.println("Привет.");
+                case ("Привет.") -> System.out.println("Привет.");
                 case ("Как дела?") -> System.out.println("Хорошо как у тебя");
                 default -> System.out.println("Не понимаю :(");
             }
