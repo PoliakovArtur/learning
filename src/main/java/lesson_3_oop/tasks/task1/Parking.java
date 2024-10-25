@@ -35,13 +35,79 @@ package lesson_3_oop.tasks.task1;
     System.out.println(parking.queueSize()); Вывод в консоль: 1
     System.out.println(parking.isEnableToAddCar()); Вывод в консоль: false
     parking.printInfo(); Вывод в консоль: Всего мест: 2 Свободных мест: 0 Количество припаркованных автомобилей: 2 Количество автомобилей в очереди: 1
- */
 
+*/
 public class Parking {
+    int size;
+    int freeSpaces;
+    int queue;
+    int defaultSize = 10;
 
+    void carIn() {
+        if (freeSpaces > 0) {
+            freeSpaces -= 1;
+            System.out.println("Машина помещена на парковку; осталось " + freeSpaces + " мест");
+        } else {
+            queue += 1;
+            System.out.println("Свободных мест нет. Машин в очереди: " + queue);
+        }
+    }
+
+    void carOut() {
+        if (freeSpaces == size)
+            System.out.println("Выезд невозможен; нет машин на парковке");
+        else {
+            if (queue == 0) {
+                freeSpaces += 1;
+                System.out.println("Машина выехала с парковки; осталось " + freeSpaces + " мест");
+            } else {
+                queue -= 1;
+                System.out.println("Машина выехала с парковки; машин в очереди: " + queue);
+            }
+        }
+
+    }
+
+    void getSize() {
+        System.out.println("Всего мест: " + size);
+    }
+
+    void getFreeSpaces() {
+        System.out.println("Всего свободных мест: " + freeSpaces);
+    }
+
+    void getQueue() {
+        System.out.print("Всего машин в очереди: " + queue);
+    }
+
+    void newCarAvailable() {
+        if (freeSpaces > 0) {
+            System.out.println("Свободные места есть");
+        } else {
+            System.out.println("Свободных мест нет");
+        }
+    }
+
+    void parkingInfo() {
+        System.out.println("Информация о парковке:");
+        getSize();
+        getFreeSpaces();
+        System.out.println("Всего машин на парковке: " + (size - freeSpaces));
+        getQueue();
+    }
+}
+
+
+
+
+
+
+
+/*
     public static void main(String[] args) {
         // метод System.out.println после вывода выполняет перенос на другую строку
         // есть также метод System.out.print, который не выполняет переноса
+
         System.out.print(0);
         System.out.println(1);
         System.out.print(2);
@@ -58,6 +124,5 @@ public class Parking {
                 Какой то текст.
                 
                 """);
-    }
+   */
 
-}
