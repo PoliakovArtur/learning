@@ -38,17 +38,24 @@ package lesson_3_oop.tasks.task1;
 
 */
 public class Parking {
+    //TODO: не выполнено требование ограничения доступа к полям - сейчас можно спокойно поменять size снаружи
+
     int size;
     int freeSpaces;
     int queue;
+    //TODO: это должно быть константой
     int defaultSize = 10;
 
+    //TODO: нет конструктора, в который можно передать размер парковки
+
+
+//TODO сделать методы, которые предназначены для внешнего пользования публичными
     void carIn() {
         if (freeSpaces > 0) {
-            freeSpaces -= 1;
+            freeSpaces -= 1; // декремент
             System.out.println("Машина помещена на парковку; осталось " + freeSpaces + " мест");
         } else {
-            queue += 1;
+            queue += 1; // инкремент
             System.out.println("Свободных мест нет. Машин в очереди: " + queue);
         }
     }
@@ -67,7 +74,7 @@ public class Parking {
         }
 
     }
-
+    //TODO: методы get должны возвращать значение, а не выводить инфу в консоль.
     void getSize() {
         System.out.println("Всего мест: " + size);
     }
@@ -80,6 +87,7 @@ public class Parking {
         System.out.print("Всего машин в очереди: " + queue);
     }
 
+    //todo: этот метод должен возвращать boolean. также такие методы лучше называть вопросом isNewCarAvailable
     void newCarAvailable() {
         if (freeSpaces > 0) {
             System.out.println("Свободные места есть");
