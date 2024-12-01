@@ -1,40 +1,36 @@
 package lesson_3_oop;
 
-import lesson_3_oop.model.User;
-
 public class Main {
+
     public static void main(String[] args) {
+        //1. как создать объект Тип имя = new Тип();
         Main main = new Main();
+        User user = new User(2, "John");
 
-        //ctrl a  + ctrl alt l - форматирование
-        var b = 3;
-        byte b1 = 3;
-        byte b2 = 4;
-        byte b3 = (byte) (b1 + b2);
+        //2. передача по ссылке и значению
+        int i = 4;
+        int j = i;
+        i++;
+        System.out.println(j);
 
+        User john = new User(2, "John");
+        User jane = john;
+        setName(jane, "jane");
 
-        //
-        Employee user2 = new Employee(), user3 = null;
+        System.out.println(john.getName());
 
-        Employee vasya = new Employee("Вася", "vasya@mail.ru", 30, 10000);
-        System.out.println(vasya.age);
+        method(i);
+        System.out.println(i);
 
-        user2.salary = 20000;
+        //3. сравнение объектов
+        System.out.println(john == jane); //проверяем ссылки, т.е. ссылаются ли они на один и тот же объект
+    }
 
-        System.out.println(vasya.calculateSalaryFromAllWorkingPeriod(2));
-        System.out.println(user2.calculateSalaryFromAllWorkingPeriod(2));
+    static void method(int i) {
+        i++;
+    }
 
-        var name = vasya.getName();
-        System.out.println(name);
-
-        vasya.printInfo();
-
-        vasya.addDocument("1101", "121232");
-        Employee.Document document = vasya.getDocument();
-
-        document.printOwnerInfo();
-
-        User user = new User();
-
+    static void setName(User user, String name) {
+        user.setName(name);
     }
 }

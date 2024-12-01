@@ -105,12 +105,6 @@ public class Parking {
     }
 }
 
-
-
-
-
-
-
 /*
     public static void main(String[] args) {
         // метод System.out.println после вывода выполняет перенос на другую строку
@@ -133,4 +127,3 @@ public class Parking {
                 
                 """);
    */
-
