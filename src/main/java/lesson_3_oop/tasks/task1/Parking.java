@@ -1,5 +1,7 @@
 package lesson_3_oop.tasks.task1;
 
+import java.util.Scanner;
+
 /*
     Реализовать класс Парковка.
     При создании объекта в него передается размер парковки в виде количества мест.
@@ -35,8 +37,84 @@ package lesson_3_oop.tasks.task1;
     System.out.println(parking.queueSize()); Вывод в консоль: 1
     System.out.println(parking.isEnableToAddCar()); Вывод в консоль: false
     parking.printInfo(); Вывод в консоль: Всего мест: 2 Свободных мест: 0 Количество припаркованных автомобилей: 2 Количество автомобилей в очереди: 1
-
 */
+public class Parking {
+   static Scanner scan = new Scanner(System.in);
+    final int defaultSize = 2;
+        private int queue;
+    private int size;
+    private int freeSpaces;
+    public Parking(int size) {
+        if (size > 0) {
+            this.size = size;
+            this.freeSpaces = size;
+        }
+        else {
+            System.out.println("Введены некорректные данные. Будет создана парковка с размером по умолчанию");
+            this.size = defaultSize;
+            this.freeSpaces = defaultSize;
+        }
+            }
+    public int getFreeSpaces(){
+        return freeSpaces;
+    }
+    public int getSize(){
+        return size;
+    }
+    public int getQueue(){
+        return queue;
+    }
+    public boolean newCarAvailable() {
+        if (freeSpaces > 0)
+            return true;
+        else return false;
+    }
+    public void carIn() {
+        if (freeSpaces > 0) {
+            freeSpaces -= 1;
+            System.out.println("Машина помещена на парковку; осталось " + freeSpaces + " мест");
+        }
+        else {
+            queue += 1;
+            System.out.println("Свободных мест нет. Машин в очереди: " + queue);
+        }
+    }
+    public void carOut() {
+        if (freeSpaces == size)
+            System.out.println("Выезд невозможен; нет машин на парковке");
+        else {
+            if (queue == 0) {
+                freeSpaces += 1;
+                System.out.println("Машина выехала с парковки; осталось " + freeSpaces + " мест");
+            }
+            else {
+                queue -= 1;
+                System.out.println("Машина выехала с парковки; машина из очереди заехала на парковку. Машин в очереди: " + queue);
+            }
+        }
+    }
+    public void parkingInfo() {
+        System.out.println("Информация о парковке");
+        System.out.println("Размер парковки: " + size);
+        System.out.println("Свободных мест: " + freeSpaces);
+        System.out.println("Всего машин на парковке: " + (size - freeSpaces));
+        System.out.println("Машин в очереди: " + queue);
+    }
+
+    public static void main(String[] args) {
+        while (1 == 1) {
+            Parking parking = new Parking(scan.nextInt());
+            System.out.println(parking.getSize());
+            System.out.println(parking.getQueue());
+            System.out.println(parking.getFreeSpaces());
+            System.out.println(parking.newCarAvailable());
+            parking.carIn();
+            parking.parkingInfo();
+        }
+    }
+}
+
+/*
 public class Parking {
     //TODO: не выполнено требование ограничения доступа к полям - сейчас можно спокойно поменять size снаружи
 
@@ -49,7 +127,7 @@ public class Parking {
     //TODO: нет конструктора, в который можно передать размер парковки
 
 
-//TODO сделать методы, которые предназначены для внешнего пользования публичными
+//TODO: сделать методы, которые предназначены для внешнего пользования публичными +
     void carIn() {
         if (freeSpaces > 0) {
             freeSpaces -= 1; // декремент
@@ -74,7 +152,7 @@ public class Parking {
         }
 
     }
-    //TODO: методы get должны возвращать значение, а не выводить инфу в консоль.
+    //TODO: методы get должны возвращать значение, а не выводить инфу в консоль. +
     void getSize() {
         System.out.println("Всего мест: " + size);
     }
@@ -87,7 +165,7 @@ public class Parking {
         System.out.print("Всего машин в очереди: " + queue);
     }
 
-    //todo: этот метод должен возвращать boolean. также такие методы лучше называть вопросом isNewCarAvailable
+    //todo: этот метод должен возвращать boolean. также такие методы лучше называть вопросом isNewCarAvailable +
     void newCarAvailable() {
         if (freeSpaces > 0) {
             System.out.println("Свободные места есть");
