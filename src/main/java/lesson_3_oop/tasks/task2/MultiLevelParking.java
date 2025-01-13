@@ -35,5 +35,33 @@ package lesson_3_oop.tasks.task2;
 
  */
 
+import lesson_3_oop.tasks.task1.Parking;
 public class MultiLevelParking {
+    private int[] array;
+    private int levelNumber;
+    private int allSpaces;
+    private int queue;
+
+    MultiLevelParking(int[] array) {
+        this.array = array;
+        for (int i = 0; i < array.length; i++) {
+            Parking parking = new Parking(array[i]);
+            if (array[i] <= 0) array[i] = 2;
+            this.allSpaces += array[i];
+        }
+    }
+    public void addCar(int k) {
+        for (int i = 0; i < array.length; i++) {
+
+        }
+    }
+    public int getAllSpaces() {
+        return allSpaces;
+    }
+
+    /*public void getInfo() {
+        System.out.println(freeSpaces);
+        System.out.println(array[0]);
+    }*/
+
 }
