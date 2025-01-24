@@ -8,6 +8,15 @@ package lesson_3_oop.animals;
 
 public abstract class Animal implements Sayable, SomeInterface {
 
+    private String name;
+
     public Animal() {
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+
 }

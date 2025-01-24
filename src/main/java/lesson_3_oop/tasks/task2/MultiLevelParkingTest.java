@@ -6,8 +6,22 @@ import java.util.Scanner;
 
 public class MultiLevelParkingTest {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-       while (true) {
-           System.out.println(999);
-          MultiLevelParking[] multiLevelParking = new MultiLevelParking[scan.nextInt()];
-       }}}
+
+        Scanner scan = null;
+        while (true) {
+            System.out.println(999);
+            MultiLevelParking multiLevelParking = new MultiLevelParking(new int[]{2,2});
+
+            for (int i = 0; i < 10; i++) {
+                multiLevelParking.addCar();
+            }
+
+            for (int i = 0; i < 10; i++) {
+                multiLevelParking.dropCar(1);
+            }
+
+            multiLevelParking.getInfo();
+        }
+    }
+}
+

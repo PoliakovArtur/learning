@@ -78,18 +78,19 @@ public class Parking {
         }
     }
 
-    public void dropCar() {
-        if (freeSpaces == size)
+    public boolean dropCar() {
+        if (freeSpaces == size) {
             System.out.println("Выезд невозможен; нет машин на парковке");
-        else
-            if (queue == 0) {
-                freeSpaces += 1;
-                System.out.println("Машина выехала с парковки; осталось " + freeSpaces + " мест");
-            } else {
-                queue -= 1;
-                System.out.println("Машина выехала с парковки; машина из очереди заехала на парковку. Машин в очереди: " + queue);
-            }
+            return false;
+        } else if (queue == 0) {
+            freeSpaces += 1;
+            System.out.println("Машина выехала с парковки; осталось " + freeSpaces + " мест");
+        } else {
+            queue -= 1;
+            System.out.println("Машина выехала с парковки; машина из очереди заехала на парковку. Машин в очереди: " + queue);
         }
+        return true;
+    }
 
 
     public void parkingInfo() {

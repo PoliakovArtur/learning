@@ -46,4 +46,3 @@ package lesson_3_oop.tasks.task3;
 public class CinemaBooking {
 
 }
-

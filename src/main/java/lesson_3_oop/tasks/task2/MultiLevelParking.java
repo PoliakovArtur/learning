@@ -44,39 +44,39 @@ public class MultiLevelParking {
     private int floor;
     private int freeSpaces;
     private Parking[] array;
-    MultiLevelParking(Parking[] array) {
-        this.array = array;
+
+    MultiLevelParking(int[] ints) {
+        this.array = new Parking[ints.length];
         for (int i = 0; i < array.length; i++) {
-array[i] = new Parking(scan.nextInt());
-freeSpaces += array[i].getSize();
-        }}
+            array[i] = new Parking(scan.nextInt());
+            freeSpaces += array[i].getSize();
+        }
+    }
+
     public void addCar() {
         for (int i = 0; i < array.length; i++) {
-            if (array[i].isNewCarAvailable() | i == array.length - 1) {
-               freeSpaces -= array[i].getFreeSpaces();
+            if (array[i].isNewCarAvailable() || i == array.length - 1) {
+                freeSpaces -= array[i].getFreeSpaces();
                 System.out.println("Этаж " + (i + 1) + ":");
                 array[i].addCar();
                 freeSpaces += array[i].getFreeSpaces();
                 break;
-                }
             }
-
-
-
         }
+
+
+    }
+
     public void dropCar() {
         for (int i = array.length - 1; i >= 0; i--) {
-            if (array[i].getFreeSpaces() != array[i].getSize() | i == 0) {
-                freeSpaces -= array[i].getFreeSpaces();
+            if (array[i].getFreeSpaces() != array[i].getSize() && array[i].dropCar()) {
+                freeSpaces--;
                 System.out.println("Этаж " + (i + 1) + ":");
-                array[i].dropCar();
-                freeSpaces += array[i].getFreeSpaces();
                 break;
             }
-
-            }
-
         }
+    }
+
     public void addCar(int floor) {
         this.floor = floor;
         if (array[floor - 1].isNewCarAvailable()) {
@@ -85,6 +85,7 @@ freeSpaces += array[i].getSize();
         System.out.println("Этаж " + floor + ":");
         array[floor - 1].addCar();
     }
+
     public void dropCar(int floor) {
         this.floor = floor;
         if (!(array[floor - 1].getSize() == array[floor - 1].getFreeSpaces())) {
@@ -93,9 +94,11 @@ freeSpaces += array[i].getSize();
         System.out.println("Этаж " + floor + ":");
         array[floor - 1].dropCar();
     }
+
     public int getFreeSpaces() {
         return freeSpaces;
     }
+
     public void getInfo() {
         for (int i = 0; i < array.length; i++) {
             System.out.print("Этаж " + i + ": ");
