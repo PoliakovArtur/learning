@@ -36,12 +36,73 @@ package lesson_3_oop.tasks.task2;
  */
 
 import lesson_3_oop.tasks.task1.Parking;
-public class MultiLevelParking {
-    private int[] array;
-    private int levelNumber;
-    private int allSpaces;
-    private int queue;
 
+import java.util.Scanner;
+
+public class MultiLevelParking {
+    Scanner scan = new Scanner(System.in);
+    private int floor;
+    private int freeSpaces;
+    private Parking[] array;
+    MultiLevelParking(Parking[] array) {
+        this.array = array;
+        for (int i = 0; i < array.length; i++) {
+array[i] = new Parking(scan.nextInt());
+freeSpaces += array[i].getSize();
+        }}
+    public void addCar() {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].isNewCarAvailable() | i == array.length - 1) {
+               freeSpaces -= array[i].getFreeSpaces();
+                System.out.println("Этаж " + (i + 1) + ":");
+                array[i].addCar();
+                freeSpaces += array[i].getFreeSpaces();
+                break;
+                }
+            }
+
+
+
+        }
+    public void dropCar() {
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i].getFreeSpaces() != array[i].getSize() | i == 0) {
+                freeSpaces -= array[i].getFreeSpaces();
+                System.out.println("Этаж " + (i + 1) + ":");
+                array[i].dropCar();
+                freeSpaces += array[i].getFreeSpaces();
+                break;
+            }
+
+            }
+
+        }
+    public void addCar(int floor) {
+        this.floor = floor;
+        if (array[floor - 1].isNewCarAvailable()) {
+            freeSpaces -= 1;
+        }
+        System.out.println("Этаж " + floor + ":");
+        array[floor - 1].addCar();
+    }
+    public void dropCar(int floor) {
+        this.floor = floor;
+        if (!(array[floor - 1].getSize() == array[floor - 1].getFreeSpaces())) {
+            freeSpaces += 1;
+        }
+        System.out.println("Этаж " + floor + ":");
+        array[floor - 1].dropCar();
+    }
+    public int getFreeSpaces() {
+        return freeSpaces;
+    }
+    public void getInfo() {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print("Этаж " + i + ": ");
+            array[i].parkingInfo();
+        }
+    }
+    /*
     MultiLevelParking(int[] array) {
         this.array = array;
         for (int i = 0; i < array.length; i++) {
@@ -50,10 +111,7 @@ public class MultiLevelParking {
             this.allSpaces += array[i];
         }
     }
-    public void addCar(int k) {
-        for (int i = 0; i < array.length; i++) {
 
-        }
     }
     public int getAllSpaces() {
         return allSpaces;
