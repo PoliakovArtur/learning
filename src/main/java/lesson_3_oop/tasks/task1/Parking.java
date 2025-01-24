@@ -64,14 +64,14 @@ public class Parking {
         return queue;
     }
 
-    public boolean newCarAvailable() {
+    public boolean isNewCarAvailable() {
         return freeSpaces > 0;
     }
 
     public void addCar() {
         if (freeSpaces > 0) {
             freeSpaces -= 1;
-            System.out.println("Машина помещена на парковку; осталось " + freeSpaces + " мест");
+            System.out.println("Машина помещена на парковку; осталось " + freeSpaces + " мест.");
         } else {
             queue += 1;
             System.out.println("Свободных мест нет. Машин в очереди: " + queue);
@@ -93,7 +93,6 @@ public class Parking {
 
 
     public void parkingInfo() {
-        System.out.println("Информация о парковке");
         System.out.println("Размер парковки: " + size);
         System.out.println("Свободных мест: " + freeSpaces);
         System.out.println("Всего машин на парковке: " + (size - freeSpaces));

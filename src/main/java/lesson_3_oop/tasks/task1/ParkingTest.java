@@ -12,7 +12,7 @@ public class ParkingTest {
             System.out.println(parking.getFreeSpaces());
             parking.addCar();
             parking.addCar();
-            System.out.println(parking.newCarAvailable());
+            System.out.println(parking.isNewCarAvailable());
             parking.addCar();
             parking.parkingInfo();
             parking.dropCar();
