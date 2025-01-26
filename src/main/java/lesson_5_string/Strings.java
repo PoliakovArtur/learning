@@ -1,6 +1,6 @@
 package lesson_5_string;
 
-public class Main {
+public class Strings {
 
     public static void main(String[] args) {
         String s1 = "abc";
@@ -12,7 +12,6 @@ public class Main {
         System.out.println(s1 == s3);
 
         //UTF-8 UTF-16 UTF-32
-
 
         System.out.println("\uD83D\uDE04");
 
@@ -39,10 +38,10 @@ public class Main {
         String s6 = "a";
 
         long before = System.currentTimeMillis();
-        for(int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 100000; i++) {
             s6 = s6 + i;
         }
-     //   System.out.println(s6);
+        //   System.out.println(s6);
         long after = System.currentTimeMillis();
 
         System.out.println("time " + (after - before));
@@ -50,7 +49,7 @@ public class Main {
         StringBuilder stringBuilder = new StringBuilder(10000);
 
         before = System.currentTimeMillis();
-        for(int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 100000; i++) {
             stringBuilder.append(i);
         }
         after = System.currentTimeMillis();
@@ -61,15 +60,35 @@ public class Main {
 
     /*
 
-        public String doSomething(String str) {
-            return str;
-        }
-
         1. Перевернуть строку
+
+            public String reverse(String str) {
+
+            }
+
         2. Определить, является ли строка палиндромом
+
+            public boolean isPalindrome(String str) {
+
+            }
+
         3. Roman to Integer
 
+            public int isValid(String str) {
+
+            }
+
+
+        4. Определить валидность скобочной последовательности
+
+        примеры
+        {[()]} - true
+        {(() - false
+        ([{])} - false
+
+        public boolean isValidBracketSequence(String bracketSequence) {
+
+        }
+
      */
-
-
 }
